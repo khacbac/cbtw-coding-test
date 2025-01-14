@@ -1,9 +1,9 @@
 import { Container } from "@/components/Container";
-import React, { View, Text } from "react-native";
+import React, { Text } from "react-native";
 
 export default function FeedbackScreen() {
   return (
-    <Container safer="all">
+    <Container>
       <Text>Feedback</Text>
     </Container>
   );

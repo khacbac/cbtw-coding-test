@@ -47,8 +47,8 @@ export const useHomeScreen = () => {
     onGetData("refreshing");
   };
 
-  const gotoFeedback = () => {
-    navigation.navigate("Feedback");
+  const gotoFeedback = (gifDetail: GifDetail) => {
+    navigation.navigate("Feedback", { gifDetail });
   };
 
   return {

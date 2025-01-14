@@ -16,6 +16,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { HomeScreen } from "./home";
 import { FeedbackScreen } from "./feedback";
+import { SearchScreen } from "./search";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -45,6 +46,7 @@ export default function RootLayout() {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Feedback" component={FeedbackScreen} />
+        <Stack.Screen name="Search" component={SearchScreen} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </ThemeProvider>

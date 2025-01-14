@@ -1,19 +1,16 @@
-import { AppButton } from "@/components/AppButton";
 import { Container } from "@/components/Container";
-import { useAppNavigation } from "@/navigations/hooks";
-import React, { FlatList, Text, View } from "react-native";
+import React, { View } from "react-native";
 import { useHomeScreen } from "./useHomeScreen";
 import { GifDetail } from "@/api/type";
 import { GifItem } from "@/components/GifItem";
 import { AppList } from "@/components/AppList";
 
 export default function HomeScreen() {
-  const navigation = useAppNavigation();
   const { gifs, gotoFeedback, loadingStatus, onLoadMore, onRefresh } =
     useHomeScreen();
 
   const renderItem = ({ item }: { item: GifDetail }) => {
-    return <GifItem item={item} onPress={gotoFeedback} />;
+    return <GifItem item={item} onPress={() => gotoFeedback(item)} />;
   };
 
   return (

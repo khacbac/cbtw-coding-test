@@ -1,6 +1,40 @@
-# Welcome to your Expo app 👋
+# Welcome to your this app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a GIF search application that allows users to:
+
+- Search for GIFs using the GIPHY API
+- View trending GIFs when no search term is entered
+- Scroll through paginated results with infinite loading
+- View GIF details and provide feedback
+- Enjoy a responsive and user-friendly interface
+
+The app is built using:
+
+- React Native with Expo
+- TypeScript for type safety
+- GIPHY API for GIF content
+- Custom hooks for state management and API integration
+- File-based routing for navigation
+
+Key features:
+
+- Debounced search to optimize API calls
+- Pull-to-refresh functionality
+- Infinite scroll pagination
+- Loading states and error handling
+- Clean and maintainable code structure
+
+Total Time Taken:
+
+- 1 hour for the initial setup and configuration
+- 2 hours for the search functionality
+- 1 hour for the infinite scroll and pagination
+- 1 hour for the loading states and error handling
+- 1 hour for the clean and maintainable code structure
+
+Note:
+
+- Not all the features are implemented because we don't want to spend too much time on this demo, but the code is ready to be used for the future.
 
 ## Get started
 

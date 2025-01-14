@@ -1,12 +1,15 @@
-import { API_URL } from "@/config";
-import { apiFetch } from "../base";
+import { API_KEY, API_URL } from "@/config";
+import { ApiArrayResponse, apiFetch } from "../base";
+import { GifDetail } from "../type";
 
 export const searchGifs = async (query: string) => {
-  const response = await apiFetch(`${API_URL}/search`, {});
+  const api = `${API_URL}/search?api_key=${API_KEY}`;
+  const response = await apiFetch<ApiArrayResponse<GifDetail>>(api, {});
   return response;
 };
 
 export const getTrendingGifs = async () => {
-  const response = await apiFetch(`${API_URL}/trending`, {});
+  const api = `${API_URL}/trending?api_key=${API_KEY}`;
+  const response = await apiFetch<ApiArrayResponse<GifDetail>>(api, {});
   return response;
 };

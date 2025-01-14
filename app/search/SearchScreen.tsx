@@ -2,9 +2,9 @@ import { AppButton } from "@/components/AppButton";
 import { Container } from "@/components/Container";
 import { useAppNavigation } from "@/navigations/hooks";
 import React, { View, Text } from "react-native";
-import { useHomeScreen } from "./useHomeScreen";
+import { useHomeScreen } from "./useSearchScreen";
 
-export default function HomeScreen() {
+export default function SearchScreen() {
   const navigation = useAppNavigation();
   useHomeScreen();
   return (

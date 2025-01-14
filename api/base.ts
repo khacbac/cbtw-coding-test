@@ -9,6 +9,13 @@ const defaultOptions: RequestInit = {
 
 const SUCCESS_STATUS = 200;
 
+export type LoadingStatus =
+  | "loading"
+  | "loaded"
+  | "error"
+  | "refreshing"
+  | "loadmore";
+
 export type Pagination = {
   total_count: number;
   count: number;

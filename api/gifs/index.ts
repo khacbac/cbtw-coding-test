@@ -8,8 +8,15 @@ export const searchGifs = async (query: string) => {
   return response;
 };
 
-export const getTrendingGifs = async () => {
-  const api = `${API_URL}/trending?api_key=${API_KEY}`;
+export const getTrendingGifs = async ({
+  offset = 0,
+  limit = 1,
+}: {
+  offset?: number;
+  limit?: number;
+}) => {
+  const api = `${API_URL}/trending?api_key=${API_KEY}&offset=${offset}&limit=${limit}`;
+  console.log({ api });
   const response = await apiFetch<ApiArrayResponse<GifDetail>>(api, {});
   return response;
 };

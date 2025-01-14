@@ -36,6 +36,10 @@ Note:
 
 - Not all the features are implemented because we don't want to spend too much time on this demo, but the code is ready to be used for the future.
 
+Demo:
+
+https://www.dropbox.com/scl/fi/7bok6l4edeimi5qa635ar/Screen-Recording-2025-01-14-at-23.08.23.mov?rlkey=nfd4q1tlk9r5jv262hgpp0tqj&st=8grz8wno&dl=0
+
 ## Get started
 
 1. Install dependencies

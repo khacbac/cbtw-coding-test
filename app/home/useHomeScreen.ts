@@ -1,8 +1,9 @@
 import { LoadingStatus, Pagination } from "@/api/base";
-import { getTrendingGifs } from "@/api/gifs";
+import { getTrendingGifs, searchGifs } from "@/api/gifs";
 import { GifDetail } from "@/api/type";
+import useDebounce from "@/hooks/useDebounce";
 import { useAppNavigation } from "@/navigations/hooks";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const useHomeScreen = () => {
   const navigation = useAppNavigation();
@@ -15,18 +16,34 @@ export const useHomeScreen = () => {
   });
   const hasMore =
     (pagination.offset + 1) * pagination.count < pagination.total_count;
+  const actionRef = useRef<{ search: string }>({ search: "" });
+  const [search, setSearch] = useState<string>("");
+  const debounceSearch = useDebounce(search, 450);
 
   useEffect(() => {
-    onGetData();
-  }, []);
+    if (debounceSearch) {
+      setGifs([]);
+      onGetData();
+    } else {
+      onGetData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debounceSearch]);
 
   const onGetData = (loadingStatus: LoadingStatus = "loading") => {
     setLoadingStatus(loadingStatus);
     const isLoadMore = loadingStatus === "loadmore";
     const offset = isLoadMore ? pagination.offset + 1 : 0;
-    getTrendingGifs({ offset, limit: pagination.count })
+    const api = actionRef.current.search ? searchGifs : getTrendingGifs;
+    api({ offset, limit: pagination.count, query: search })
       .then((res) => {
-        const newGifs = isLoadMore ? [...gifs, ...res.data] : res.data;
+        const dataWithUniqueId = res.data.map((item, index) => ({
+          ...item,
+          id: `${item.id}-${Date.now()}`,
+        }));
+        const newGifs = isLoadMore
+          ? [...gifs, ...dataWithUniqueId]
+          : dataWithUniqueId;
         setGifs(newGifs);
         setPagination(res.pagination);
         setLoadingStatus("loaded");
@@ -51,6 +68,11 @@ export const useHomeScreen = () => {
     navigation.navigate("Feedback", { gifDetail });
   };
 
+  const onSearch = (search: string) => {
+    actionRef.current.search = search;
+    setSearch(search);
+  };
+
   return {
     gifs,
     pagination,
@@ -58,5 +80,7 @@ export const useHomeScreen = () => {
     onLoadMore,
     onRefresh,
     gotoFeedback,
+    search,
+    onSearch,
   };
 };

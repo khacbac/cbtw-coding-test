@@ -1,5 +1,5 @@
 import { Container } from "@/components/Container";
-import React, { StyleSheet, TextInput, View } from "react-native";
+import React, { Keyboard, StyleSheet, TextInput, View } from "react-native";
 import { useHomeScreen } from "./useHomeScreen";
 import { GifDetail } from "@/api/type";
 import { GifItem } from "@/components/GifItem";
@@ -39,6 +39,7 @@ export default function HomeScreen() {
         isLoadMore={loadingStatus === "loadmore"}
         onLoadMore={onLoadMore}
         onRefresh={onRefresh}
+        onScrollBeginDrag={Keyboard.dismiss}
       />
     </Container>
   );

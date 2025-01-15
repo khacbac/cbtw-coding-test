@@ -26,8 +26,8 @@ Key features:
 
 Total Time Taken:
 
-- 1 hour for the initial setup and configuration
-- 2 hours for the search functionality
+- 1.5 hour for the initial setup and configuration
+- 1 hours for the search functionality
 - 1 hour for the infinite scroll and pagination
 - 1 hour for the loading states and error handling
 - 1 hour for the clean and maintainable code structure
